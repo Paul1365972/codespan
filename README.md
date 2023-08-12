@@ -72,7 +72,7 @@ let file_id = files.add(
 let diagnostic = Diagnostic::error()
     .with_message("`case` clauses have incompatible types")
     .with_code("E0308")
-    .with_labels(vec![
+    .with_labels_iter([
         Label::primary(file_id, 328..331).with_message("expected `String`, found `Nat`"),
         Label::secondary(file_id, 211..331).with_message("`case` clauses have incompatible types"),
         Label::secondary(file_id, 258..268).with_message("this is found to be of type `String`"),
@@ -80,7 +80,7 @@ let diagnostic = Diagnostic::error()
         Label::secondary(file_id, 306..312).with_message("this is found to be of type `String`"),
         Label::secondary(file_id, 186..192).with_message("expected type `String` found here"),
     ])
-    .with_notes(vec![unindent::unindent(
+    .with_notes_iter([unindent::unindent(
         "
             expected type `String`
                 found type `Nat`
